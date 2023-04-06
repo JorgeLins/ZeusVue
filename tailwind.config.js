@@ -5,11 +5,13 @@ module.exports = {
   theme: {
     extend: {},
     colors: {
-      'yellow-header': "#f59e0b",
-      'blue-text': "#004242"
+      'yellow-first': "#F8B933",
+      'yellow-second': "#FAD240",
+      'blue-text': "#100100"
     },
     fontFamily: {
-      "body": ['Raleway']
+      "body": ['Raleway'],
+      "roboto": ["Roboto"]
     }
   },
   variants: {

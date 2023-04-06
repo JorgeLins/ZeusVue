@@ -1,6 +1,9 @@
 <template>
   <AppHeader />
-  <AppForms />
+  <div class="pl-20 pt-24">
+    <AppForms />
+
+  </div>
 
 </template>
 
