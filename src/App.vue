@@ -1,8 +1,8 @@
 <template>
   <AppHeader />
-  <div class="pl-20 pt-24">
+  <div class=" flex gap-36 pl-20 pt-24 pr-20 max-md:flex-col  max-md:pl-9">
     <AppForms />
-
+    <AppList />
   </div>
 
 </template>
@@ -11,12 +11,14 @@
 
 import AppHeader from './components/AppHeader.vue';
 import AppForms from './components/AppForms.vue';
+import AppList from './components/AppList.vue';
 
 export default {
   name: 'App',
   components: {
     AppHeader,
-    AppForms
+    AppForms,
+    AppList
   }
 }
 </script>
