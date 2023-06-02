@@ -1,12 +1,12 @@
 <template>
     <div v-if="allData"  class="flex flex-col items-start gap-y-5 max-h-96	 overflow-scroll w-3/5  max-md:w-80">
         <label class="mb-1 text-[#004242] text-xl font-roboto">Histórico de rações</label>
-        <div v-for="obj in allData" :key="obj.id" class="bg-yellow-second w-full rounded flex pl-8 pt-4 pb-4 items-start gap-96  max-md:gap-6">
+        <div v-for="obj in allData" :key="obj.id" class="bg-yellow-second w-full justify-between	 rounded flex pl-8 pt-4 pb-4 pr-8 items-start gap-96  max-md:gap-6">
             <div class="flex flex-col gap-2 items-start">
-                <h3 class="text-[#004242] text-xl font-roboto">{{obj.name}}</h3>
+                <h3 class="text-[#004242] text-xl font-roboto">{{obj.title}}</h3>
                 <div class="flex flex-row gap-6">
                     <h3>R${{obj.price}}</h3>
-                    <h3>{{obj.quantity}}KG</h3>
+                    <h3>{{obj.amount}}KG</h3>
                 </div>
             </div>
             <div class="flex gap-7 ">
@@ -24,6 +24,7 @@
 
 <script>
 import { PhTrash } from "@phosphor-icons/vue"
+import axios from "axios";
 
     export default {
         name:"AppList",
@@ -32,39 +33,25 @@ import { PhTrash } from "@phosphor-icons/vue"
         },
         data (){
             return{
-                allData:[
-                    {
-                        "id": 1,
-                        "name": "Whiskas",
-                        "price": "32.90",
-                        "quantity": "4"
-                    },
-                    {
-                        "id": 2,
-                        "name": "Friskies",
-                        "price": "32.90",
-                        "quantity": "5"
-                    },
-                    {
-                        "id": 3,
-                        "name": "Whiskas",
-                        "price": "32.90",
-                        "quantity": "4"
-                    },
-                    {
-                        "id": 4,
-                        "name": "Whiskas",
-                        "price": "32.90",
-                        "quantity": "4"
-                    }, {
-                        "id": 5 ,
-                        "name": "Whiskas",
-                        "price": "32.90",
-                        "quantity": "4"
-                    }
-                ]
+                allData:[]
             }
-        }
+        },
+        mounted() {
+      this.getDataMethod()
+    },
+        methods: {
+        getDataMethod() {
+            axios
+                .get(" http://localhost:5000/foods")
+                .then((res) => {
+                console.log(res.data);
+                this.allData = res.data;
+                })
+                .catch((error) => {
+                console.log(error);
+        });
+    },
+  },
     }
 </script>
 
